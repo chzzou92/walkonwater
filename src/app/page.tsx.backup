@@ -1,0 +1,170 @@
+"use client";
+
+import { useEffect, useState, useCallback, useMemo, useRef } from "react";
+
+export default function Home() {
+  const [scrollY, setScrollY] = useState(0);
+  const videoRef = useRef<HTMLVideoElement>(null);
+
+  // Throttled scroll handler for better performance
+  const handleScroll = useCallback(() => {
+    requestAnimationFrame(() => {
+      setScrollY(window.scrollY);
+    });
+  }, []);
+
+  useEffect(() => {
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, [handleScroll]);
+
+  // Control volume based on scroll position
+  useEffect(() => {
+    const video = videoRef.current;
+    if (video) {
+      const maxScroll = 800;
+      const expansionProgress = Math.min(scrollY / maxScroll, 1);
+      
+      // Volume ramps from 0 to 1 (0% to 100%)
+      const volume = expansionProgress;
+      video.volume = volume;
+    }
+  }, [scrollY]);
+
+  // Ensure video autoplays on load and reload
+  useEffect(() => {
+    const video = videoRef.current;
+    if (video) {
+      // Set initial volume to 0 (will be controlled by scroll)
+      video.volume = 0;
+      
+      // Create and click an invisible button to trigger real user interaction
+      const triggerUserInteraction = () => {
+        console.log('triggering user interaction');
+        
+        // Create an invisible button element
+        const button = document.createElement('button');
+        button.style.position = 'absolute';
+        button.style.left = '-9999px';
+        button.style.top = '-9999px';
+        button.style.width = '1px';
+        button.style.height = '1px';
+        button.style.opacity = '0';
+        button.style.pointerEvents = 'none';
+        button.textContent = 'Click me';
+        
+        console.log('Button created:', button);
+        
+        // Add it to the DOM
+        document.body.appendChild(button);
+        console.log('Button added to DOM');
+        
+        // Actually click the button (this is real user interaction)
+        button.click();
+        console.log('Button clicked programmatically');
+        
+        // Remove the button after clicking
+        setTimeout(() => {
+          document.body.removeChild(button);
+          console.log('Button removed from DOM');
+          
+          // Now try to unmute and play the video
+          console.log('Attempting to unmute video...');
+          video.muted = false;
+          console.log('Video muted set to:', video.muted);
+          
+          video.play().then(() => {
+            console.log('Video play successful!');
+          }).catch((error) => {
+            console.error('Video play failed:', error);
+          });
+        }, 50);
+      };
+
+      // Always trigger user interaction on load
+      triggerUserInteraction();
+
+      // Also try when video metadata is loaded
+      video.addEventListener('loadedmetadata', () => {
+        if (video.paused) {
+          triggerUserInteraction();
+        }
+      });
+      
+      // And when video can start playing
+      video.addEventListener('canplay', () => {
+        if (video.paused) {
+          triggerUserInteraction();
+        }
+      });
+
+      return () => {
+        video.removeEventListener('loadedmetadata', triggerUserInteraction);
+        video.removeEventListener('canplay', triggerUserInteraction);
+      };
+    }
+  }, []);
+
+  // Memoize calculations to prevent unnecessary recalculations
+  const videoStyles = useMemo(() => {
+    const maxScroll = 800; // Reduced for smoother expansion
+    const expansionProgress = Math.min(scrollY / maxScroll, 1);
+    
+    // Start 20% larger (scale 1.2) and expand to fill screen (scale 2.1)
+    const scale = 0.85 + (1.71 - 1.2) * expansionProgress;
+    const borderRadius = 24 * (1 - expansionProgress);
+    const shadow = 24 * (1 - expansionProgress);
+    
+    return {
+      transform: `translate(-50%, -50%) scale(${scale})`,
+      borderRadius: `${borderRadius}px`,
+      boxShadow: `0 ${shadow}px ${shadow * 2}px rgba(0, 0, 0, 0.3)`,
+      width: '1200px',  // 2:1 aspect ratio (1200x600)
+      height: '600px'
+    };
+  }, [scrollY]);
+
+  return (
+    <div className="font-sans min-h-[200vh] bg-gray-100">
+      <div 
+        className="fixed left-1/2 transition-all duration-200 ease-out will-change-transform"
+        style={{
+          ...videoStyles,
+          top: '50%' 
+        }}
+      >
+        {/* Title above the video */}
+        <div className="absolute -top-16 left-1/2 transform -translate-x-1/2 text-center">
+          <h1 className="text-4xl font-bold text-gray-800 tracking-wide">
+            Walk on Water
+          </h1>
+        </div>
+        
+        <div className="relative w-full h-full">
+          <video
+            ref={videoRef}
+            autoPlay
+            loop
+            muted={false}
+            playsInline
+            preload="auto"
+            className="w-full h-full rounded-xl object-cover"
+            style={{
+              pointerEvents: 'none'
+            }}
+          >
+            <source src="/Walk on Water Trailer Correct Aspect Ratio.mov" type="video/mp4" />
+            Your browser does not support the video tag.
+          </video>
+        </div>
+      </div>
+      
+      {/* Scroll indicator */}
+      <div className="h-screen flex items-center justify-center">
+        <div className="text-center text-gray-600">
+ 
+        </div>
+      </div>
+    </div>
+  );
+}
