@@ -13,7 +13,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Walk onWater"
+  title: "Walk on Water"
 };
 
 export default function RootLayout({
