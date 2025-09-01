@@ -1,6 +1,8 @@
 "use client";
 
 import { useState } from "react";
+import Image from "next/image";
+import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 
 export default function IndexPage() {
@@ -27,13 +29,13 @@ export default function IndexPage() {
 
         {/* Navigation Links */}
         <div className="absolute inset-0 flex flex-col items-center justify-center z-10">
-          {/* Logo */}
-          <a
+          {/* Logo (use Link for internal route) */}
+          <Link
             href="/"
             className="absolute top-8 left-8 z-10 text-white font-['AppleGaramond'] text-xl hover:text-gray-300"
           >
             Walk on Water
-          </a>
+          </Link>
 
           {/* Socials */}
           <a
@@ -42,7 +44,13 @@ export default function IndexPage() {
             className="absolute top-8 right-[16%] z-10"
             rel="noopener noreferrer"
           >
-            <img src="/icons8-instagram.svg" alt="Instagram" className="w-5 h-5" />
+            <Image
+              src="/icons8-instagram.svg"
+              alt="Instagram"
+              width={20}
+              height={20}
+              className="w-5 h-5"
+            />
           </a>
           <a
             href="https://www.imdb.com/title/tt34098412/?ref_=nm_ov_bio_lk"
@@ -50,21 +58,23 @@ export default function IndexPage() {
             className="absolute top-8 right-[14%] z-10"
             rel="noopener noreferrer"
           >
-            <img
+            <Image
               src="/imdb-svgrepo-com.svg"
               alt="IMDb"
-              className="w-5 h-5 filter invert"
+              width={20}
+              height={20}
+              className="w-5 h-5 invert"
             />
           </a>
 
           {/* Menu links */}
-          <a
+          <Link
             href="/info"
             className="text-white text-xl mb-8 font-['AppleGaramond'] hover:text-gray-300 transition-colors"
             style={{ top: "15%", left: "38%", position: "absolute" }}
           >
             Info & Updates
-          </a>
+          </Link>
 
           {/* Final Film (toggle) */}
           <button
