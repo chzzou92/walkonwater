@@ -21,7 +21,7 @@ export default function InfoPage() {
         </video>
 
         <Link
-          href="/index"
+          href="/menu"
           className="absolute top-8 left-8 z-10 text-white font-['AppleGaramond'] text-xl hover:text-gray-300"
         >
           Walk on Water
