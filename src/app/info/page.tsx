@@ -33,12 +33,12 @@ export default function InfoPage() {
           </h1>
           <p className="text-l font-['AppleGaramond'] -mr-[-44%]  max-w-4xl mx-auto mb-8">
             Jeffrey, a rising Division I track star, spends his final summer before college <br />
-            training with Charlie, a devoted swim recruit, by the lake they've always <br />
+            training with Charlie, a devoted swim recruit, by the lake they&apos;ve always <br />
             called home. One afternoon, Jeffrey stumbles upon a weathered pistol buried <br />
             in the brush—its discovery unraveling. When the emotional pressure reaches <br />
             a breaking point, Charlie races against something unseen—toward a moment <br />
             that could change everything.
-          </p>
+        </p>
           <ul className="text-l font-['AppleGaramond'] mt-[28%] max-w-4xl mx-auto space-y-2 text-left pl-8 mb-8">
             <li>
               • Asian American International Film Festival 2025 - Official
