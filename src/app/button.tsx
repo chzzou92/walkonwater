@@ -1,71 +1,16 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { useRouter } from 'next/navigation';
 
 const Button = () => {
-  const [showPasswordInput, setShowPasswordInput] = useState(false);
-  const [password, setPassword] = useState('');
-  const [isCorrect, setIsCorrect] = useState(false);
   const router = useRouter();
 
-  const handleButtonClick = () => {
-    setShowPasswordInput(true);
+  const handleClick = () => {
+    router.push('/index'); // redirect straight to /index
   };
-
-  const handlePasswordSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (password === 'walkonwater') { // Change this to your desired password
-      router.push('/index');
-    } else {
-      alert('Incorrect password. Please try again.');
-      setPassword('');
-    }
-  };
-
-  const handlePasswordChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setPassword(e.target.value);
-  };
-
-  if (showPasswordInput) {
-    return (
-      <div className="flex flex-col items-center space-y-4">
-        <form onSubmit={handlePasswordSubmit} className="flex flex-col items-center space-y-3">
-          <input
-            type="password"
-            value={password}
-            onChange={handlePasswordChange}
-            placeholder="Enter password"
-            className="px-4 py-2 text-lg font-light text-white bg-transparent border-2 border-white rounded-full placeholder-white placeholder-opacity-70 focus:outline-none focus:ring-2 focus:ring-white focus:ring-opacity-50"
-            style={{
-              fontFamily: 'Apple Garamond, serif'
-            }}
-            autoFocus
-          />
-          <button
-            type="submit"
-            className="px-6 py-2 text-lg font-light text-white border-2 border-white rounded-full hover:bg-white hover:text-black transition-all duration-300 transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-white focus:ring-opacity-50"
-            style={{
-              fontFamily: 'Apple Garamond, serif'
-            }}
-          >
-            Submit
-          </button>
-        </form>
-        <button
-          onClick={() => setShowPasswordInput(false)}
-          className="px-4 py-1 text-sm font-light text-white border border-white rounded-full hover:bg-white hover:text-black transition-all duration-300 focus:outline-none"
-          style={{
-            fontFamily: 'Apple Garamond, serif'
-          }}
-        >
-          Cancel
-        </button>
-      </div>
-    );
-  }
 
   return (
     <button 
-      onClick={handleButtonClick}
+      onClick={handleClick}
       className="group relative px-6 py-2 text-lg font-light text-white border-2 border-white rounded-full hover:bg-white hover:text-black transition-all duration-300 transform hover:scale-105 focus:outline-none focus:ring-4 focus:ring-white focus:ring-opacity-50"
       style={{
         fontFamily: 'Apple Garamond, serif'
