@@ -114,7 +114,7 @@ export default function Home() {
   }
 
   return (
-    <div className="font-sans min-h-[100vh] bg-black to-blue-700">
+    <div className="font-sans min-h-[100vh] overflow-none bg-black to-blue-700">
       <div
         className="fixed left-1/2 will-change-transform"
         style={{

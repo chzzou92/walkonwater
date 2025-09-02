@@ -10,10 +10,10 @@ export default function MenuPage() {
 
   return (
     <div
-      className="min-h-screen bg-black flex items-center justify-center overflow-x-hidden"
-      style={{ aspectRatio: "2160/1080" }}
+      className="min-h-screen bg-black flex items-center justify-center overflow-none"
+      style={{ aspectRatio: "1920/1080" }}
     >
-      <div className="w-full h-full relative overflow-x-hidden">
+      <div className="w-full h-full relative overflow-none">
         {/* Background video */}
         <video
           autoPlay
@@ -32,16 +32,55 @@ export default function MenuPage() {
           {/* Logo (use Link for internal route) */}
           <Link
             href="/"
-            className="absolute top-8 left-8 z-10 text-white font-['AppleGaramond'] text-xl hover:text-gray-300"
+            className="absolute top-8 left-8 z-10 text-white font-['AppleGaramond'] text-2xl hover:text-gray-400 border-b-1 py-2 border-gray-300"
           >
             Walk on Water
           </Link>
 
-          {/* Socials */}
-          <a
+        <div className="absolute top-22 left-8 flex flex-col justify-start items-start ">
+          {/* Menu links */}
+          <Link
+            href="/info"
+            className="text-white text-base font-['AppleGaramond'] hover:text-gray-400 transition-colors cursor-pointer"
+          >
+            info & updates
+          </Link>
+
+          {/* Final Film (toggle) */}
+          <button
+            onClick={() =>
+              setActiveVideo(activeVideo === "final" ? null : "final")
+            }
+            className="text-white text-base font-['AppleGaramond'] hover:text-gray-400 transition-colors cursor-pointer"
+          >
+            final film
+          </button>
+
+          {/* Deleted Scenes (toggle) */}
+          <button
+            onClick={() =>
+              setActiveVideo(activeVideo === "deleted" ? null : "deleted")
+            }
+            className="text-white text-base font-['AppleGaramond'] hover:text-gray-400 transition-colors cursor-pointer"
+          >
+            deleted scenes
+          </button>
+
+          {/* Behind the Scenes (toggle) */}
+          <button
+            onClick={() =>
+              setActiveVideo(activeVideo === "behind" ? null : "behind")
+            }
+            className="text-white text-base font-['AppleGaramond'] hover:text-gray-400 transition-colors cursor-pointer"
+          >
+            behind the scenes
+          </button>
+          <div className="flex mt-4 flex-row items-center justify-center gap-2">
+                    {/* Socials */}
+                    <a
             href="https://www.instagram.com/walkonwaterfilm/"
             target="_blank"
-            className="absolute top-8 right-[16%] z-10"
+            className="z-10"
             rel="noopener noreferrer"
           >
             <Image
@@ -55,7 +94,7 @@ export default function MenuPage() {
           <a
             href="https://www.imdb.com/title/tt34098412/?ref_=nm_ov_bio_lk"
             target="_blank"
-            className="absolute top-8 right-[14%] z-10"
+            className="z-10"
             rel="noopener noreferrer"
           >
             <Image
@@ -66,49 +105,9 @@ export default function MenuPage() {
               className="w-5 h-5 invert"
             />
           </a>
-
-          {/* Menu links */}
-          <Link
-            href="/info"
-            className="text-white text-xl mb-8 font-['AppleGaramond'] hover:text-gray-300 transition-colors cursor-pointer"
-            style={{ top: "15%", left: "38%", position: "absolute" }}
-          >
-            Info & Updates
-          </Link>
-
-          {/* Final Film (toggle) */}
-          <button
-            onClick={() =>
-              setActiveVideo(activeVideo === "final" ? null : "final")
-            }
-            className="text-white text-xl mb-8 font-['AppleGaramond'] hover:text-gray-300 transition-colors cursor-pointer"
-            style={{ top: "20%", left: "38%", position: "absolute" }}
-          >
-            Final Film
-          </button>
-
-          {/* Deleted Scenes (toggle) */}
-          <button
-            onClick={() =>
-              setActiveVideo(activeVideo === "deleted" ? null : "deleted")
-            }
-            className="text-white text-xl mb-8 font-['AppleGaramond'] hover:text-gray-300 transition-colors cursor-pointer"
-            style={{ top: "25%", left: "38%", position: "absolute" }}
-          >
-            Deleted Scenes
-          </button>
-
-          {/* Behind the Scenes (toggle) */}
-          <button
-            onClick={() =>
-              setActiveVideo(activeVideo === "behind" ? null : "behind")
-            }
-            className="text-white text-xl mb-8 font-['AppleGaramond'] hover:text-gray-300 transition-colors cursor-pointer"
-            style={{ top: "30%", left: "38%", position: "absolute" }}
-          >
-            Behind the Scenes
-          </button>
-
+          </div>
+        </div>
+         
           {/* AnimatePresence for video players */}
           <AnimatePresence>
             {activeVideo === "behind" && (
@@ -119,9 +118,9 @@ export default function MenuPage() {
                 exit={{ opacity: 0 }}
                 transition={{ duration: 0.7 }}
                 className="absolute"
-                style={{ top: "25%", left: "55%" }}
+                style={{ top: "20%", left: "40%" }}
               >
-                <div className="w-[480px] h-[240px] rounded-2xl shadow-lg overflow-hidden">
+                <div className="w-[800px] h-[400px] rounded-2xl shadow-lg overflow-hidden">
                   <iframe
                     src="https://player.vimeo.com/video/1114957195?h=c719e5b8ad&badge=0&autopause=0&player_id=0&app_id=58479"
                     className="rounded-2xl shadow-lg w-full h-full"
@@ -142,9 +141,9 @@ export default function MenuPage() {
                 exit={{ opacity: 0 }}
                 transition={{ duration: 0.7 }}
                 className="absolute"
-                style={{ top: "25%", left: "55%" }}
+                style={{ top: "25%", left: "40%" }}
               >
-                <div className="w-[480px] h-[240px] rounded-2xl shadow-lg overflow-hidden">
+                <div className="w-[800px] h-[400px] rounded-2xl shadow-lg overflow-hidden">
                   <iframe
                     src="https://player.vimeo.com/video/1114957934?badge=0&autopause=0&player_id=0&app_id=58479"
                     className="rounded-2xl shadow-lg w-full h-full"
@@ -165,11 +164,11 @@ export default function MenuPage() {
                 exit={{ opacity: 0 }}
                 transition={{ duration: 0.7 }}
                 className="absolute"
-                style={{ top: "05%", left: "55%", width: "25%" }}
+                style={{ top: "05%", left: "45%", width: "25%" }}
               >
                 <div className="grid grid-rows-3 gap-4">
                   {/* Clip 1 */}
-                  <div className="w-full aspect-video rounded-2xl shadow-lg overflow-hidden">
+                  <div className="w-full aspect-auto rounded-2xl shadow-lg overflow-hidden">
                     <iframe
                       src="https://player.vimeo.com/video/1114960256?h=27d762a00d&badge=0&autopause=0&player_id=0&app_id=58479"
                       className="rounded-2xl shadow-lg w-full h-full"

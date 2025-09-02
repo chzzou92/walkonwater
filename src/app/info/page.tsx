@@ -5,7 +5,7 @@ export default function InfoPage() {
   return (
     <div
       className="min-h-screen bg-black flex items-center justify-center overflow-x-hidden"
-      style={{ aspectRatio: "2160/1080" }}
+      style={{ aspectRatio: "1920/1080" }}
     >
       <div className="w-full h-full relative">
         <video
@@ -22,7 +22,7 @@ export default function InfoPage() {
 
         <Link
           href="/menu"
-          className="absolute top-8 left-8 z-10 text-white font-['AppleGaramond'] text-xl hover:text-gray-300"
+          className="absolute top-8 left-8 z-10 text-white font-['AppleGaramond'] text-xl hover:text-gray-400"
         >
           Walk on Water
         </Link>
