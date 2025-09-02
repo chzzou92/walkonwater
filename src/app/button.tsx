@@ -6,7 +6,7 @@ const Button = () => {
   return (
     <Link href="/menu">
       <button
-        className="group relative px-6 py-2 text-lg font-light text-white border-2 border-white rounded-full hover:bg-white hover:text-black transition-all duration-300 transform hover:scale-105 focus:outline-none focus:ring-4 focus:ring-white focus:ring-opacity-50"
+        className="group relative px-6 py-2 text-lg font-light text-white border-2 border-white rounded-full hover:bg-white hover:text-black transition-all duration-300 cursor-pointer transform hover:scale-105 focus:outline-none focus:ring-4 focus:ring-white focus:ring-opacity-50"
         style={{
           fontFamily: "Apple Garamond, serif",
         }}

@@ -82,8 +82,8 @@ export default function Home() {
     return {
       transform: `translate(-50%, -50%) scale(${scale})`,
       borderRadius: `${borderRadius}px`,
-      boxShadow: `0 ${shadow}px ${shadow * 2}px rgba(0, 0, 0, 0.3)`,
-      width: '1200px',  // 2:1 aspect ratio (1200x600)
+      boxShadow: `0 0 ${shadow * 5}px rgba(255, 255, 255, 0.4)`,
+      width: '1200px',  
       height: '600px',
       top: `${topPosition}%`
     };

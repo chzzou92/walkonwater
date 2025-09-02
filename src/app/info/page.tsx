@@ -4,7 +4,7 @@ import Image from "next/image";
 export default function InfoPage() {
   return (
     <div
-      className="min-h-screen bg-black flex items-center justify-center"
+      className="min-h-screen bg-black flex items-center justify-center overflow-x-hidden"
       style={{ aspectRatio: "2160/1080" }}
     >
       <div className="w-full h-full relative">

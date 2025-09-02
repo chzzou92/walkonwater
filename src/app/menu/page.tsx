@@ -10,7 +10,7 @@ export default function MenuPage() {
 
   return (
     <div
-      className="min-h-screen bg-black flex items-center justify-center"
+      className="min-h-screen bg-black flex items-center justify-center overflow-x-hidden"
       style={{ aspectRatio: "2160/1080" }}
     >
       <div className="w-full h-full relative">
@@ -70,7 +70,7 @@ export default function MenuPage() {
           {/* Menu links */}
           <Link
             href="/info"
-            className="text-white text-xl mb-8 font-['AppleGaramond'] hover:text-gray-300 transition-colors"
+            className="text-white text-xl mb-8 font-['AppleGaramond'] hover:text-gray-300 transition-colors cursor-pointer"
             style={{ top: "15%", left: "38%", position: "absolute" }}
           >
             Info & Updates
@@ -81,7 +81,7 @@ export default function MenuPage() {
             onClick={() =>
               setActiveVideo(activeVideo === "final" ? null : "final")
             }
-            className="text-white text-xl mb-8 font-['AppleGaramond'] hover:text-gray-300 transition-colors"
+            className="text-white text-xl mb-8 font-['AppleGaramond'] hover:text-gray-300 transition-colors cursor-pointer"
             style={{ top: "20%", left: "38%", position: "absolute" }}
           >
             Final Film
@@ -92,7 +92,7 @@ export default function MenuPage() {
             onClick={() =>
               setActiveVideo(activeVideo === "deleted" ? null : "deleted")
             }
-            className="text-white text-xl mb-8 font-['AppleGaramond'] hover:text-gray-300 transition-colors"
+            className="text-white text-xl mb-8 font-['AppleGaramond'] hover:text-gray-300 transition-colors cursor-pointer"
             style={{ top: "25%", left: "38%", position: "absolute" }}
           >
             Deleted Scenes
@@ -103,7 +103,7 @@ export default function MenuPage() {
             onClick={() =>
               setActiveVideo(activeVideo === "behind" ? null : "behind")
             }
-            className="text-white text-xl mb-8 font-['AppleGaramond'] hover:text-gray-300 transition-colors"
+            className="text-white text-xl mb-8 font-['AppleGaramond'] hover:text-gray-300 transition-colors cursor-pointer"
             style={{ top: "30%", left: "38%", position: "absolute" }}
           >
             Behind the Scenes
