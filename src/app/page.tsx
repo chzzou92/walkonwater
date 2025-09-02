@@ -2,6 +2,7 @@
 
 import { useEffect, useState, useCallback, useMemo, useRef } from "react";
 import Button from "./button";
+import ScrollButton from "./ScrollButton";
 
 export default function Home() {
   const [scrollY, setScrollY] = useState(0);
@@ -152,6 +153,9 @@ export default function Home() {
             Your browser does not support the video tag.
           </video>
         </div>
+        <div className="absolute left-1/2 top-175">
+            <ScrollButton />
+            </div>
       </div>
 
       <div
