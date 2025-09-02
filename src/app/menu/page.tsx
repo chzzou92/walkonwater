@@ -13,7 +13,7 @@ export default function MenuPage() {
       className="min-h-screen bg-black flex items-center justify-center overflow-x-hidden"
       style={{ aspectRatio: "2160/1080" }}
     >
-      <div className="w-full h-full relative">
+      <div className="w-full h-full relative overflow-x-hidden">
         {/* Background video */}
         <video
           autoPlay
